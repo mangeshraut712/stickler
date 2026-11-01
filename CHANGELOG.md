@@ -191,6 +191,13 @@ Each release links to full notes on the
 
 ### Fixed
 
+- **The HTML report's Executive Summary now colours its metric cards and shows
+  the right document count.** A guard on a method that does not exist kept every
+  card blue regardless of `color_thresholds`, and the Documents card ignored a
+  results dict's `document_count` key and could render `None`. The count is
+  now read in one place, `DataExtractor.get_document_count`
+  ([#467](https://github.com/awslabs/stickler/issues/467))
+
 - **The HTML report's field performance table now escapes field names.** It
   wrote each name into the page as raw HTML, while the chart beside it escaped
   the same name, so a name containing `<`, `>` or `&` was read by the browser as
